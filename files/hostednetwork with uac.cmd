@@ -11,6 +11,13 @@ ECHO Press any key when you are ready to go...
 pause > nul
 goto check_os_version
 :check_os_version
+	ver | find /n /i "6.3" > nul
+	if %errorlevel% equ 0 (
+		goto checkPrivileges
+	) else (
+		goto recheck_os_version_1
+		)
+:check_os_version_1
 	ver | find /n /i "6.2" > nul
 	if %errorlevel% equ 0 (
 		goto checkPrivileges
