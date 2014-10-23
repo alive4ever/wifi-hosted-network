@@ -17,7 +17,7 @@ goto check_os_version
 	) else (
 		goto recheck_os_version_1
 		)
-:check_os_version_1
+:recheck_os_version_1
 	ver | find /n /i "6.2" > nul
 	if %errorlevel% equ 0 (
 		goto checkPrivileges
