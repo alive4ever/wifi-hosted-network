@@ -1,7 +1,7 @@
 @echo off
-TITLE Windows 7/8 hostednetwork easy-setup
+TITLE Windows 7/8/8.1/10 hostednetwork easy-setup
 COLOR 17
-ECHO Welcome to Windows 7/8 Hostednetwork easy configuration
+ECHO Welcome to Windows 7/8/8.1/10 Hostednetwork easy configuration
 ECHO You must run this script in administrator mode.
 ECHO Press any key to check for administrative permissions.
 pause > nul
@@ -123,7 +123,7 @@ goto check_Permissions
 	if errorlevel 1 exit
 
 :stopscript
-	echo Failure: Current permissions inadequate.
+	echo Failure: Not enough privilege to perform the operation
 	echo Restart this script in administrator mode.
 	ECHO If you have UAC enabled, right click this script file
 	ECHO and choose Run as administrator

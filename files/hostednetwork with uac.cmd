@@ -11,20 +11,29 @@ ECHO Press any key when you are ready to go...
 pause > nul
 goto check_os_version
 :check_os_version
+	goto check_win_10
+:check_win_10
+	ver | find /n /i "10" > nul
+	if %errorlevel% equ 0 (
+		goto checkPrivileges
+	) else (
+		goto check_win_81
+		)
+:check_win_81
 	ver | find /n /i "6.3" > nul
 	if %errorlevel% equ 0 (
 		goto checkPrivileges
 	) else (
-		goto recheck_os_version_1
+		goto check_win_8
 		)
-:recheck_os_version_1
+:check_win_8
 	ver | find /n /i "6.2" > nul
 	if %errorlevel% equ 0 (
 		goto checkPrivileges
 	) else (
-		goto recheck_os_version
+		goto check_win_7
 		)
-:recheck_os_version
+:check_win_7
 	ver | find /n /i "6.1" > nul
 	if %errorlevel% equ 0 (
 		goto checkPrivileges
@@ -37,7 +46,7 @@ goto check_os_version
 	title "ERROR DETECTED! :("
 	echo ------------------------------------------------------------------
 	echo Sorry, your operating system is not supported to run hostednetwork.
-	echo Please upgrade to Windows 7 or Windows 8 to enable hostednetwork.
+	echo Please upgrade to newer version of Windows to enable hostednetwork.
 	echo ------------------------------------------------------------------
 	echo Press any key to exit...
 	pause > nul
@@ -169,7 +178,7 @@ goto setssid
 		ECHO Your hostednetwork has been configured
 		ECHO Press any key to return
 	) else (
-		ECHO Failure configuring hostednetwork
+		ECHO Failure occured when configuring hostednetwork
 		ECHO Press any key to return
 		)
 	pause > nul
